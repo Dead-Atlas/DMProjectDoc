@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>پروژه‌ی گسسته · سامانه محاسبات ترکیبیاتی</title>
+    <link rel="preload" href="Vazirmatn.ttf" as="font" type="font/ttf" crossorigin />
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <div class="container">
+        <div class="corner-ornament top-left"></div>
+        <div class="corner-ornament top-right"></div>
+        <div class="corner-ornament bottom-left"></div>
+        <div class="corner-ornament bottom-right"></div>
+
+        <div class="theme-toggle">
+            <button id="themeBtn" aria-label="Toggle Theme">
+                <span class="mode-icon">⚜</span>
+                <span id="themeLabel">THEME: LIGHT</span>
+            </button>
+        </div>
+
+        <div class="header">
+            <img src="uniLogo.png" alt="University Logo" class="header-logo" />
+            <h1>ماشین حساب <span class="hl">ترکیبیاتی</span></h1>
+            <div class="sub">
+                پروژه‌ی درس <span class="gold">ریاضیات گسسته</span>
+            </div>
+            
+            <div class="header-badges">
+                <span class="badge">نیم‌سال دوم ۱۴۰۴-۱۴۰۵</span>
+                <span class="badge">پروژه انفرادی</span>
+                <span class="badge">C++ / Java</span>
+            </div>
+        </div>
+
+        <div class="info-bar">
+            <div class="item">
+                <span class="label">دانشکده</span>
+                <span class="value">مهندسی کامپیوتر</span>
+            </div>
+            <div class="item">
+                <span class="label">استاد درس</span>
+                <span class="value">دکتر حمید ملا</span>
+            </div>
+            <div class="item">
+                <span class="label">دستیار آموزشی (TA)</span>
+                <span class="value">عرفان رحمت</span>
+            </div>
+        </div>
+
+        <div class="vintage-divider">❖ ⚜ ❖</div>
+
+        <div class="toc">
+            <a href="#goals">مقدمه و اهداف</a>
+            <a href="#functions">توابع پیاده‌سازی</a>
+            <a href="#problems">مسائل ارزیابی</a>
+        </div>
+
+        <section id="goals">
+            <h2>مقدمه و اهداف پروژه</h2>
+            <p>
+                این پروژه با هدف درک عمیق‌تر الگوریتم‌های شمارش و ساختارهای بازگشتی طراحی شده است.
+                هدف اصلی، شبیه‌سازی ساختارهای بنیادین ریاضی در قالب کد، بدون اتکا به ابزارهای سیستم‌عامل یا کتابخانه‌های سطح بالا است.
+            </p>
+            <ul>
+                <li>پیاده‌سازی فرمول‌های پایه‌ی ترکیبیات و روابط شمارش بدون استفاده از پکیج‌های آماده.</li>
+                <li>درک عمیق پیاده‌سازی توابع بازگشتی و شیوه‌های شمارش پیشرفته (مانند توابع استرلینگ و بل).</li>
+                <li>مدیریت خطاهای سرریز محاسباتی (Overflow) و بهینه‌سازی ترتیب عملیات در فاکتوریل‌های بزرگ.</li>
+            </ul>
+        </section>
+
+        <section id="functions">
+            <h2>مشخصات فنی و توابع مورد نیاز (Specification)</h2>
+            <p>
+                تمامی توابع باید به صورت دست‌نویس و بدون اتکا به کتابخانه‌های آماده پیاده‌سازی شوند. ساختار کلی سیستم در سه فاز منطقی چیده شده است:
+            </p>
+
+            <h3>فاز اول: توابع اتمیک و پایه‌ای (Core Utilities)</h3>
+            <p>ابزارهای پایه‌ای محاسبات که در تمامی فازهای بعدی مورد استفاده قرار می‌گیرند:</p>
+            <div class="fn-grid">
+                <div class="fn-item">
+                    <div class="name">power(base, exp)</div>
+                    <div class="desc">محاسبه توان صحیح اشیاء به صورت دست‌نویس.</div>
+                    <div class="formula">base<sup>exp</sup></div>
+                </div>
+                <div class="fn-item">
+                    <div class="name">factorial(n)</div>
+                    <div class="desc">محاسبه فاکتوریل عدد n با مدیریت سرریز عددی.</div>
+                    <div class="formula">n! = n × (n - 1) × ... × 1</div>
+                </div>
+            </div>
+
+            <h3>فاز دوم: روابط بازگشتی پیشرفته و مدل‌های توزیع</h3>
+            <p class="precomputation-note">
+                💡 <strong>راهبرد آرایه‌ها (Precomputation):</strong> طبق اصول بهینه‌سازی، اکیداً توصیه می‌شود مقادیر توابع بازگشتی سنگین (مانند استرلینگ و بل) را یک‌بار محاسبه کرده و در آرایه‌ها یا ماتریس‌ها ذخیره کنید تا از محاسبه تکراری جلوگیری شود.
+            </p>
+            <div class="fn-grid">
+                <div class="fn-item">
+                    <div class="name">combination(n, r)</div>
+                    <div class="desc">محاسبه ترکیب انتخاب r از n شیء متمایز.</div>
+                    <div class="formula">C(n, r) = n! / (r! × (n - r)!)</div>
+                </div>
+                <div class="fn-item">
+                    <div class="name">distributeIdentical(r, n)</div>
+                    <div class="desc">توزیع r شیء یکسان در n جعبه متمایز.</div>
+                    <div class="formula">C(n + r - 1, r)</div>
+                </div>
+                <div class="fn-item">
+                    <div class="name">catalan(n)</div>
+                    <div class="desc">محاسبه n-امین عدد کاتالان.</div>
+                    <div class="formula">C<sub>n</sub> = (1 / (n + 1)) × C(2n, n)</div>
+                </div>
+                <div class="fn-item">
+                    <div class="name">stirlingSecond(n, k)</div>
+                    <div class="desc">اعداد استرلینگ نوع دوم.</div>
+                    <div class="formula">S(n, k) = k × S(n-1, k) + S(n-1, k-1)</div>
+                </div>
+                <div class="fn-item">
+                    <div class="name">bellNumber(n)</div>
+                    <div class="desc">تعداد کل افرازهای ممکن یک مجموعه n عضوی.</div>
+                    <div class="formula">B<sub>n</sub> = Σ<sub>k=0</sub><sup>n</sup> S(n, k)</div>
+                </div>
+                <div class="fn-item">
+                    <div class="name">derangement(n)</div>
+                    <div class="desc">جایگشت پریش؛ محاسبه چیدمان‌های بدون عنصر ثابت.</div>
+                    <div class="formula">D<sub>n</sub> = (n-1) × (D<sub>n-1</sub> + D<sub>n-2</sub>)</div>
+                </div>
+                <div class="fn-item">
+                    <div class="name">towerOfHanoi(n)</div>
+                    <div class="desc">محاسبه تعداد گام‌های بهینه حل مسأله برج هانوی.</div>
+                    <div class="formula">H<sub>n</sub> = 2 × H<sub>n-1</sub> + 1</div>
+                </div>
+                <div class="fn-item">
+                    <div class="name">pigeonhole(objects, holes)</div>
+                    <div class="desc">اصل لانه کبوتری؛ محاسبه کران پایین توزیع اعضا.</div>
+                    <div class="formula">┌ objects / holes ┐</div>
+                </div>
+            </div>
+
+            <h3>فاز سوم: نظریه ساختاری گراف</h3>
+            <p>تحلیل ساختارهای گرافیکی بر اساس روابط و قضایای ساختاری درس گسسته:</p>
+            <div class="fn-grid fn-grid-single">
+                <div class="fn-item fn-item-graphic">
+                    <div class="name">isGraphicSequence(sequence[], size)</div>
+                    <div class="desc">بررسی گرافیکی بودن یک دنباله درجه با پیاده‌سازی کامل قضیه و الگوریتم مربوطه.</div>
+                    <div class="formula formula-graphic">Havel-Hakimi Alg.</div>
+                </div>
+            </div>
+
+            <div class="code-container code-margin-top">
+                <button class="btn-copy" id="copyBtn">COPY</button>
+                <pre class="code-block" id="cppCode"><span class="k">long long</span> <span class="f">distributeIdentical</span>(<span class="k">int</span> r, <span class="k">int</span> n);
+<span class="k">long long</span> <span class="f">derangement</span>(<span class="k">int</span> n);
+<span class="k">bool</span> <span class="f">isGraphicSequence</span>(<span class="k">int</span> sequence[], <span class="k">int</span> size);</pre>
+            </div>
+        </section>
+
+        <section id="problems">
+            <h2>مسائل جامع جهت ارزیابی و تست سیستم (Test Cases)</h2>
+            <p>خروجی سیستم محاسباتی شما برای راستی‌آزمایی صحت عملکرد توابع، باید دقیقاً با نتایج ذکر شده در هر مسأله همخوانی داشته باشد:</p>
+            
+            <div class="problem">
+                <div class="q">مسأله ۱ (افراز مجموعه‌ها): می‌خواهیم یک پروژه درسی گسسته با ۷ سرفصل متمایز را بین ۳ دستیار آموزشی (TA) توزیع کنیم، به طوری که به هر TA حداقل یک سرفصل برسد. این کار به چند طریق ممکن است؟</div>
+                <div class="hint">نحوه حل: تعداد راه‌های توزیع اشیاء متمایز در جعبه‌های متمایز بدون جعبه خالی از فرمول n! × S(r, n) تبعیت می‌کند. خروجی حاصل‌ضرب factorial(3) در stirlingSecond(7, 3) است.</div>
+                <div class="answer">Result: 1800</div>
+            </div>
+
+            <div class="problem">
+                <div class="q">مسأله ۲ (توزیع اشیاء یکسان): یک سرور ابری می‌خواهد ۱۲ درخواست پردازشی کاملاً یکسان را بین ۵ هسته پردازشی متمایز توزیع کند. این تخصیص بار به چند روش امکان‌پذیر است؟</div>
+                <div class="hint">نحوه حل: این مسأله مدل توزیع r شیء یکسان در n جعبه متمایز است. پاسخ با فراخوانی متد distributeIdentical(12, 5) به دست می‌آید.</div>
+                <div class="answer">Result: 1820</div>
+            </div>
+
+            <div class="problem">
+                <div class="q">مسأله ۳ (جایگشت‌های پریش): در یک آزمون حضوری، ۶ دانشجو پاسخ‌نامه‌های خود را تحویل می‌دهند. مراقب آزمون به اشتباه و به طور تصادفی پاسخ‌نامه‌ها را بین آن‌ها پخش می‌کند. چند حالت وجود دارد که هیچ دانشجویی برگه‌ی خود را دریافت نکند؟</div>
+                <div class="hint">نحوه حل: این مسأله نمونه دقیق عدم انطباق کامل یا جایگشت پریش است. پاسخ با فراخوانی متد derangement(6) محاسبه می‌شود.</div>
+                <div class="answer">Result: 265</div>
+            </div>
+
+            <div class="problem">
+                <div class="q">مسأله ۴ (ساختارهای کاتالان): چند درخت جستجوی دودویی (BST) متمایز می‌توان با استفاده از ۶ کلید منحصربه‌فرد ساخت؟ همچنین تعداد مسیرهای معتبر شبه‌پرانتزی با این تعداد زوج چیست؟</div>
+                <div class="hint">نحوه حل: ساختارهای درختی منبعث از ساختار ترتیبی، با استفاده از عدد کاتالان n محاسبه می‌شوند. پاسخ با فراخوانی متد catalan(6) است.</div>
+                <div class="answer">Result: 132</div>
+            </div>
+
+            <div class="problem">
+                <div class="q">مسأله ۵ (اصل لانه کبوتری): حداقل چند کلمه عبور ۸ رقمی عددی (متشکل از ارقام ۰ تا ۹) باید توسط یک سیستم احراز هویت تولید شود تا مطمئن شویم حداقل دو کلمه عبور کاملاً یکسان به کاربران تخصیص یافته است؟</div>
+                <div class="hint">نحوه حل: تعداد کل کلمات عبور منحصربه‌فرد برابر با ۱۰ به توان ۸ است که با متد power(10, 8) محاسبه می‌شود. طبق اصل لانه کبوتری برای رخ‌داد تکرار قطعی، به تعداد خانه‌ها به علاوه ۱ شیء نیاز داریم.</div>
+                <div class="answer">Result: 100000001</div>
+            </div>
+
+            <div class="problem">
+                <div class="q">مسأله ۶ (قضیه هاول-حکیمی): آیا یک شبکه کامپیوتری با ۶ گره می‌تواند به گونه‌ای متصل شود که درجات گره‌های آن به صورت دنباله [5, 4, 4, 3, 2, 2] باشد؟ (آیا این دنباله گرافیکی است؟)</div>
+                <div class="hint">نحوه حل: بررسی وجود گراف ساده با مشخصات داده شده از طریق اجرای الگوریتم هاول-حکیمی روی دنباله انجام می‌شود. پاسخ خروجی متد isGraphicSequence با دنباله فرضی است.</div>
+                <div class="answer">Result: True (1)</div>
+            </div>
+
+            <div class="problem">
+                <div class="q">مسأله ۷ (تحلیل گراف): آیا می‌توان گرافی ساده با مشخصات دنباله درجات [4, 4, 3, 3, 2, 1] رسم کرد؟</div>
+                <div class="hint">نحوه حل: ارزیابی دنباله توسط متد isGraphicSequence صورت می‌گیرد. (مجموع درجات این دنباله ۱۷ یعنی فرد است، لذا طبق قضیه دست‌دادن گرافیکی نیست).</div>
+                <div class="answer">Result: False (0)</div>
+            </div>
+        </section>
+
+        <div class="footer">
+            <span class="dept">DEPARTMENT OF COMPUTER ENGINEERING · UNIVERSITY OF ISFAHAN</span>
+            <span class="sig">DESIGNED BY ATLAS</span>
+            <span class="date">2026 SPRING</span>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
