@@ -1,4 +1,3 @@
-/* ── Theme Toggle ─────────────────────────────────── */
 const themeBtn = document.getElementById("themeBtn");
 const themeLabel = document.getElementById("themeLabel");
 const copyBtn = document.getElementById("copyBtn");
@@ -20,7 +19,6 @@ themeBtn.addEventListener("click", () => {
   }, 500);
 });
 
-/* ── Copy Button + Toast ─────────────────────────── */
 function showToast(msg) {
   const toast = document.getElementById("toast");
   toast.textContent = msg;
@@ -46,7 +44,6 @@ copyBtn.addEventListener("click", () => {
   });
 });
 
-/* ── Scroll Progress Bar ──────────────────────────── */
 const progressBar = document.getElementById("scroll-progress");
 
 window.addEventListener(
@@ -61,7 +58,6 @@ window.addEventListener(
   { passive: true },
 );
 
-/* ── Cursor Glow ──────────────────────────────────── */
 const cursorGlow = document.getElementById("cursor-glow");
 let mouseX = 0,
   mouseY = 0;
@@ -87,13 +83,11 @@ function animateGlow() {
   glowRaf = dist > 0.5 ? requestAnimationFrame(animateGlow) : null;
 }
 
-/* ── H1 Glitch: set data-text ─────────────────────── */
 const h1 = document.querySelector(".header h1");
 if (h1) {
   h1.setAttribute("data-text", h1.textContent);
 }
 
-/* ── Scroll Reveal ────────────────────────────────── */
 document.addEventListener("DOMContentLoaded", () => {
   const revealEls = document.querySelectorAll("[data-reveal]");
   revealEls.forEach((el) => el.classList.add("reveal-hidden"));
@@ -114,13 +108,11 @@ document.addEventListener("DOMContentLoaded", () => {
   revealEls.forEach((el) => revealObserver.observe(el));
 });
 
-/* ── TOC Active Section ───────────────────────────── */
 const tocLinks = document.querySelectorAll(".toc a");
 const sections = document.querySelectorAll("section[id]");
 
 function updateTOC() {
   const scrollY = window.scrollY;
-  // فقط وقتی کاربر اسکرول کرده active بشه
   if (scrollY < 80) {
     tocLinks.forEach((a) => a.classList.remove("active"));
     return;
@@ -137,7 +129,7 @@ function updateTOC() {
 
 window.addEventListener("scroll", updateTOC, { passive: true });
 
-/* ── Animated Counter on .answer ─────────────────── */
+
 function easeOutCubic(t) {
   return 1 - Math.pow(1 - t, 3);
 }

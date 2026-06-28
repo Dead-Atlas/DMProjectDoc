@@ -624,7 +624,6 @@ code {
     color: #10b981;
 }
 
-/* ── Flip Card Grid ───────────────────────────────── */
 .fn-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -726,7 +725,6 @@ code {
     min-height: 120px;
 }
 
-/* ── Problems ─────────────────────────────────────── */
 .problem {
     background: var(--bg-problem);
     padding: 22px 22px 56px 22px;
@@ -817,7 +815,6 @@ code {
     margin-top: 35px;
 }
 
-/* ── Scroll Progress Bar ──────────────────────────── */
 #scroll-progress {
     position: fixed;
     top: 0;
@@ -832,7 +829,6 @@ code {
         background 0.5s ease;
 }
 
-/* ── Cursor Glow ──────────────────────────────────── */
 #cursor-glow {
     position: fixed;
     width: 22px;
@@ -858,7 +854,6 @@ code {
     mix-blend-mode: screen;
 }
 
-/* ── Toast Notification ───────────────────────────── */
 #toast {
     position: fixed;
     bottom: 32px;
@@ -886,7 +881,6 @@ code {
     transform: translateY(0);
 }
 
-/* ── Scroll Reveal ────────────────────────────────── */
 .reveal-hidden {
     opacity: 0;
     transform: translateY(32px);
@@ -900,7 +894,6 @@ code {
     transform: translateY(0);
 }
 
-/* stagger delay for problems */
 .problem.reveal-hidden:nth-child(2) {
     transition-delay: 0.05s;
 }
@@ -923,7 +916,6 @@ code {
     transition-delay: 0.35s;
 }
 
-/* ── Responsive ───────────────────────────────────── */
 @media (max-width: 768px) {
     body {
         padding: 20px 10px;
